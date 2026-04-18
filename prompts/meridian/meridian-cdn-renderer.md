@@ -69,7 +69,7 @@ TEMPLATE HTML
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 
   <!-- Meridian CSS -->
-  <link rel="stylesheet" href="https://[TON_HOST]/meridian.css">
+  <link rel="stylesheet" href="https://dinh.github.io/deepdive/styles/meridian.css">
 
   <!-- Prism (si blocs de code présents) -->
   [si code]
@@ -264,7 +264,7 @@ TEMPLATE HTML
 <div id="nav-overlay"></div>
 
 <!-- Meridian JS -->
-<script src="https://[TON_HOST]/meridian.js" defer></script>
+<script src="https://dinh.github.io/deepdive/meridian.js" defer></script>
 
 </body>
 </html>
