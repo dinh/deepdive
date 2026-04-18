@@ -376,13 +376,35 @@ body.focus-mode .layout { grid-template-columns: 0 minmax(0, 1fr) 0; }
 body.focus-mode nav.left-nav,
 body.focus-mode aside.panel { visibility: hidden; overflow: hidden; width: 0; padding: 0; border: none; }
 
-/* MODE SYNTHÈSE */
-body.synth-mode .prose p:not(.keep),
-body.synth-mode .prose ul,
-body.synth-mode .prose ol,
+/* MODE SYNTHÈSE
+   Logique : cacher tout par défaut, révéler uniquement les sections
+   qui ont du contenu saillant (callout, blockquote, table).
+   La classe .has-synth-content est posée par meridian.js au chargement. */
+body.synth-mode section               { display: none; }
+body.synth-mode section.has-synth-content { display: block; }
+
+/* Dans les sections visibles : masquer uniquement les p directs
+   (pas ceux dans callout, blockquote, table — ils doivent rester visibles) */
+body.synth-mode section.has-synth-content > p:not(.keep),
+body.synth-mode section.has-synth-content > ul,
+body.synth-mode section.has-synth-content > ol,
+body.synth-mode section.has-synth-content > .mermaid-wrap,
+body.synth-mode section.has-synth-content > .code-wrap { display: none; }
+
+/* Filet de sécurité : enfants directs de .prose hors section */
+body.synth-mode .prose > p:not(.keep):not(.bridge),
+body.synth-mode .prose > ul,
+body.synth-mode .prose > ol,
+body.synth-mode .prose > .code-wrap,
+body.synth-mode .prose > .mermaid-wrap { display: none; }
+
+/* Toujours masquer */
 body.synth-mode p.bridge,
-body.synth-mode .mermaid-wrap,
-body.synth-mode .code-wrap { display: none; }
+body.synth-mode .panel-inline { display: none; }
+
+/* Toujours visible */
+body.synth-mode .exec-summary,
+body.synth-mode .prose > h1 { display: block; }
 
 /* DRAWER MOBILE */
 #nav-toggle {
